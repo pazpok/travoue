@@ -67,6 +67,62 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($cb);
         $this->addReference('traobject-cb', $cb);
 
+        $pikachu = new Traobject();
+        $pikachu->setTitle('Doudou pikachu intermarché rostrenen');
+        $pikachu->setCategory($this->getReference('category-doudou'));
+        $pikachu->setState($this->getReference('state-trouve'));
+        $pikachu->setUser($this->getReference('user-pazpok'));
+        $pikachu->setCounty($this->getReference('county-22'));
+        $pikachu->setPicture('https://cdn3.pokemoncarte.com/2200-large_default/peluche-pokemon-peluche-pokemon-pikachu-25-cm-avec-casquette-20-ans.jpg');
+        $pikachu->setDescription('Doudou pikachu perdu à Intermarché Rostrenen le 15/11, ma fille pleure tout le temps ...');
+        $pikachu->setEventAt(new \DateTime());
+        $pikachu->setCity('Rostrenen');
+        $pikachu->setCreatedAt(new \DateTime());
+        $manager->persist($pikachu);
+        $this->addReference('traobject-pikachu', $pikachu);
+
+        $carteid = new Traobject();
+        $carteid->setTitle('Carte identité perdu lorient');
+        $carteid->setCategory($this->getReference('category-portefeuille'));
+        $carteid->setState($this->getReference('state-trouve'));
+        $carteid->setUser($this->getReference('user-francois'));
+        $carteid->setCounty($this->getReference('county-56'));
+        $carteid->setPicture('');
+        $carteid->setDescription('Sorti de fête foraine, en rentrant à la maison je m\'aperçoie que ma carte à disparu, si quelqu`un la retrouve merci de me contacter');
+        $carteid->setEventAt(new \DateTime());
+        $carteid->setCity('Lorient');
+        $carteid->setCreatedAt(new \DateTime());
+        $manager->persist($carteid);
+        $this->addReference('traobject-carteid', $carteid);
+
+        $clefm = new Traobject();
+        $clefm->setTitle('Clé de maison');
+        $clefm->setCategory($this->getReference('category-cle'));
+        $clefm->setState($this->getReference('state-trouve'));
+        $clefm->setUser($this->getReference('user-pierre'));
+        $clefm->setCounty($this->getReference('county-35'));
+        $clefm->setPicture('https://pmcdn.priceminister.com/photo/900494340.jpg');
+        $clefm->setDescription('Clé de maison avec porte clés didl(voir photo)');
+        $clefm->setEventAt(new \DateTime());
+        $clefm->setCity('Saint Malo');
+        $clefm->setCreatedAt(new \DateTime());
+        $manager->persist($clefm);
+        $this->addReference('traobject-clefm', $clefm);
+
+        $potechap = new Traobject();
+        $potechap->setTitle('Pot d\'échappement 206');
+        $potechap->setCategory($this->getReference('category-voiture'));
+        $potechap->setState($this->getReference('state-trouve'));
+        $potechap->setUser($this->getReference('user-lucie'));
+        $potechap->setCounty($this->getReference('county-56'));
+        $potechap->setPicture('');
+        $potechap->setDescription('Le pot d\'échappement de ma 206 est parti en faisant saint brieuc rostrenen pour aller au cinéma');
+        $potechap->setEventAt(new \DateTime());
+        $potechap->setCity('Callac');
+        $potechap->setCreatedAt(new \DateTime());
+        $manager->persist($potechap);
+        $this->addReference('traobject-potechap', $potechap);
+
         $manager->flush();
     }
 
