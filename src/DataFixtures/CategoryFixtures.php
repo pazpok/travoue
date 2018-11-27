@@ -12,14 +12,14 @@ class CategoryFixtures extends Fixture
     {
         $doudou = new Category();
         $doudou->setLabel('Doudou');
-        $doudou->setIcon('fa-ghost');
+        $doudou->setIcon('fa-child');
         $doudou->setColor('#4da6ff');
         $manager->persist($doudou);
         $this->addReference('category-doudou',  $doudou);
 
         $portefeuille = new Category();
         $portefeuille->setLabel('Portefeuille');
-        $portefeuille->setIcon('fa-wallet');
+        $portefeuille->setIcon('fa-credit-card');
         $portefeuille->setColor('#996600');
         $manager->persist($portefeuille);
         $this->addReference('category-portefeuille',  $portefeuille);
@@ -34,7 +34,7 @@ class CategoryFixtures extends Fixture
         $voiture = new Category();
         $voiture->setLabel('Voiture');
         $voiture->setIcon('fa-car');
-        $voiture->setColor('#ffffff');
+        $voiture->setColor('#000000');
         $manager->persist($voiture);
         $this->addReference('category-voiture',  $voiture);
 

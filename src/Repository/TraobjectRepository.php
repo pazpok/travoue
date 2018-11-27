@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Traobject;
+use App\Entity\State;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -19,6 +20,17 @@ class TraobjectRepository extends ServiceEntityRepository
         parent::__construct($registry, Traobject::class);
     }
 
+    public function findLastTraobjectByStatut(string $state): array
+    {
+        $qb = $this->createQueryBuilder('t');
+
+        $qb = $qb->innerJoin('t.state', 's')
+            ->where($qb->expr()->eq('s.label', ':state'));
+
+        return $qb->setParameter(':state', $state)
+            ->getQuery()
+            ->getResult();
+    }
     // /**
     //  * @return Traobject[] Returns an array of Traobject objects
     //  */

@@ -392,4 +392,9 @@ class Traobject
     {
         $this->setUpdatedAt(new \DateTime());
     }
+
+    public function __toString(): string
+    {
+        return $this->getState();
+    }
 }

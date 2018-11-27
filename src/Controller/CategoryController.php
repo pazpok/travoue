@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -10,10 +11,12 @@ class CategoryController extends BaseController
     /**
      * @Route("/category", name="category")
      */
-    public function index()
+    public function footerCategory()
     {
-        return $this->render('category/index.html.twig', [
-            'controller_name' => 'CategoryController',
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+
+        return $this->render('category/footercategory.html.twig', [
+            'categories' => $categories,
         ]);
     }
 }

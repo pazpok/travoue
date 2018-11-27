@@ -25,7 +25,7 @@ class UserFixtures extends Fixture
         $lucie->setEmail('l.baudoin@gmail.com');
         $lucie->setPassword($this->passwordEncoder->encodePassword($lucie, "lbaudoin"));
         $lucie->setPhone('0652414875');
-        $lucie->setPicture('https://www.digital-campus.fr/sites/default/files/image/inline/block/image/lucie-baudouin.jpg');
+        $lucie->setPicture('lucie-baudouin.jpg');
         $lucie->setRoles(["ROLE_USER"]);
         $manager->persist($lucie);
         $this->addReference('user-lucie', $lucie);
@@ -36,7 +36,7 @@ class UserFixtures extends Fixture
         $francois->setEmail('f.heline@gmail.com');
         $francois->setPassword($this->passwordEncoder->encodePassword($francois, "fheline"));
         $francois->setPhone('0632856161');
-        $francois->setPicture('https://media.licdn.com/dms/image/C4E03AQHxhsONg-mSfA/profile-displayphoto-shrink_800_800/0?e=1548892800&v=beta&t=TFBH4ui25yGkFGx8aKLw5ZewzMPIqhPSK4KmEWnKZ3s');
+        $francois->setPicture('francois-heline.jpg');
         $francois->setRoles(["ROLE_USER"]);
         $manager->persist($francois);
         $this->addReference('user-francois', $francois);
@@ -47,7 +47,7 @@ class UserFixtures extends Fixture
         $pierre->setEmail('p.jehan@gmail.com');
         $pierre->setPassword($this->passwordEncoder->encodePassword($pierre, "pjehan"));
         $pierre->setPhone('0623741182');
-        $pierre->setPicture('https://bit.ly/2zrO2rp');
+        $pierre->setPicture('pierre-jehan.jpg');
         $pierre->setRoles(["ROLE_USER"]);
         $manager->persist($pierre);
         $this->addReference('user-pierre', $pierre);
