@@ -2,7 +2,7 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Bienvenue!{% endblock %}</title>
         {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
     </head>
     <body>
@@ -17,8 +17,8 @@
                 Traoùvé
             </h5>
             <nav class="my-2 my-md-0 mr-md-3">
-                <a class="p-2 text-dark" href="index.html">Accueil</a>
-                <a class="p-2 text-dark" href="{{ path('traobject_new', {'id': traobject.id}) }}">Déposer une annonce</a>
+                <a class="p-2 text-dark" href="{{ path('homepage') }}">Accueil</a>
+                <a class="p-2 text-dark" href="{{ path('traobject_new') }}">Déposer une annonce</a>
                 <a class="p-2 text-dark" href="list-lost.html">Objets perdus</a>
                 <a class="p-2 text-dark" href="list-found.html">Objets trouvés</a>
             </nav>

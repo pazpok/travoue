@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Traobject;
+use App\Form\FoundType;
+use App\Form\LostType;
 use App\Form\TraobjectType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -90,4 +92,51 @@ class TraobjectController extends BaseController
 
         return $this->redirectToRoute('traobject_index');
     }
+
+    /**
+     * @Route("/new", name="traobject_new#found", methods="GET|POST")
+     */
+    public function newFound(Request $request): Response
+    {
+        $traobject = new Traobject();
+        $foundform =$this->createForm(FoundType::class, $traobject);
+        $foundform->handleRequest($request);
+
+        if ($foundform->isSubmitted() && $foundform->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($traobject);
+            $em->flush();
+
+            return $this->redirectToRoute('traobject_index');
+        }
+
+        return $this->render('traobject/new.html.twig', [
+            'traobject' => $traobject,
+            'form' => $foundform->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/new", name="traobject_new#lost", methods="GET|POST")
+     */
+    public function newLost(Request $request): Response
+    {
+        $traobject = new Traobject();
+        $foundform =$this->createForm(LostType::class, $traobject);
+        $foundform->handleRequest($request);
+
+        if ($foundform->isSubmitted() && $foundform->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($traobject);
+            $em->flush();
+
+            return $this->redirectToRoute('traobject_index');
+        }
+
+        return $this->render('traobject/new.html.twig', [
+            'traobject' => $traobject,
+            'form' => $foundform->createView(),
+        ]);
+    }
+
 }
