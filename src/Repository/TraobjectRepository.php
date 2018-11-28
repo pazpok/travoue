@@ -27,7 +27,7 @@ class TraobjectRepository extends ServiceEntityRepository
         $qb = $qb
             ->innerJoin('t.state', 's')
             ->where($qb->expr()->eq('s.label', ':state'))
-            ->orderBy('t.eventAt', 'DESC')
+            ->orderBy('t.createdAt', 'DESC')
             ->setMaxResults($limit);
 
         return $qb->setParameter(':state', $state)
@@ -42,7 +42,7 @@ class TraobjectRepository extends ServiceEntityRepository
         $qb = $qb
             ->innerJoin('t.state', 's')
             ->where($qb->expr()->eq('s.label', ':state'))
-            ->orderBy('t.eventAt', 'DESC');
+            ->orderBy('t.createdAt', 'DESC');
 
         return $qb->setParameter(':state', $state)
             ->getQuery()

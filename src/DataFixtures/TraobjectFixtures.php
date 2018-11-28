@@ -45,7 +45,7 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $clef->setState($this->getReference('state-perdu'));
         $clef->setUser($this->getReference('user-pierre'));
         $clef->setCounty($this->getReference('county-35'));
-        $clef->setPicture('keys.jpg');
+        $clef->setPicture('');
         $clef->setDescription('Perdu sur la route entre Beaulieu et Colombier vers 4h du matin ...');
         $clef->setEventAt(new \DateTime());
         $clef->setCity('Rennes');
@@ -59,7 +59,7 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $cb->setState($this->getReference('state-perdu'));
         $cb->setUser($this->getReference('user-pazpok'));
         $cb->setCounty($this->getReference('county-56'));
-        $cb->setPicture('wallet.jpg');
+        $cb->setPicture('');
         $cb->setDescription('Carte bancaire perdu le long de la plage pendant une balade à Poney');
         $cb->setEventAt(new \DateTime());
         $cb->setCity('Carnac');
@@ -87,7 +87,7 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $carteid->setState($this->getReference('state-trouve'));
         $carteid->setUser($this->getReference('user-francois'));
         $carteid->setCounty($this->getReference('county-56'));
-        $carteid->setPicture('wallet.jpg');
+        $carteid->setPicture('');
         $carteid->setDescription('Sorti de fête foraine, en rentrant à la maison je m\'aperçoie que ma carte à disparu, si quelqu`un la retrouve merci de me contacter');
         $carteid->setEventAt(new \DateTime());
         $carteid->setCity('Lorient');

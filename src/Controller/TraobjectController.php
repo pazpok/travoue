@@ -51,7 +51,7 @@ class TraobjectController extends BaseController
             $em->persist($traobject);
             $em->flush();
 
-            return $this->redirectToRoute('traobject_index');
+            return $this->redirectToRoute('homepage');
         }
 
         return $this->render('traobject/new.html.twig', [
