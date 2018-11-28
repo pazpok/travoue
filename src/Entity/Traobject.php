@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Traobject
@@ -10,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="traobject", indexes={@ORM\Index(name="fk_traobject_category_idx", columns={"category_id"}), @ORM\Index(name="fk_traobject_state1_idx", columns={"state_id"}), @ORM\Index(name="fk_traobject_user1_idx", columns={"user_id"}), @ORM\Index(name="fk_traobject_county1_idx", columns={"county_id"})})
  * @ORM\Entity(repositoryClass="App\Repository\TraobjectRepository")
  * @ORM\HasLifecycleCallbacks()
+ * @Vich\Uploadable()
  */
 class Traobject
 {
@@ -31,10 +34,15 @@ class Traobject
 
     /**
      * @var string|null
-     *
      * @ORM\Column(name="picture", type="string", length=255, nullable=true)
      */
-    private $picture;
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="uploads_dir", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
 
     /**
      * @var string|null
@@ -126,9 +134,31 @@ class Traobject
     private $user;
 
     /**
+     * @return File
+     */
+    public function getImageFile(): File
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param File|null $image
+     * @throws \Exception
+     */
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        if ($image) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+
+    /**
      * @return int
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -164,18 +194,18 @@ class Traobject
     /**
      * @return string|null
      */
-    public function getPicture(): ?string
+    public function getImage(): ?string
     {
-        return $this->picture;
+        return $this->image;
     }
 
     /**
-     * @param string|null $picture
+     * @param string|null $image
      * @return Traobject
      */
-    public function setPicture(?string $picture): Traobject
+    public function setimage(?string $image): Traobject
     {
-        $this->picture = $picture;
+        $this->image = $image;
         return $this;
     }
 

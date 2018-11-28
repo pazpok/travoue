@@ -1,0 +1,6 @@
+vich_uploader:
+    db_driver: orm
+    mappings:
+        traobject:
+            uri_prefix:         '%app.path.uploads_dir%'
+            upload_destination: '%kernel.root_dir%/../web%app.path.uploads_dir%'

@@ -27,6 +27,23 @@ easy_admin:
             title: 'Edit State'
         Traobject:
           class: App\Entity\Traobject
+          list:
+            fields:
+              - { property: 'id', type: 'int' }
+              - { property: 'title', type: 'text' }
+              - { property: 'image', type: 'image', base_path: '%app.path.uploads_dir%' }
+              - { property: 'event_at', type: 'datetime' }
+              - { property: 'city', type: 'text' }
+
+          show:
+            fields:
+              - { property: 'title', type: 'text' }
+              - { property: 'image', type: 'image', base_path: '%app.path.uploads_dir%' }
+              - { property: 'event_at', type: 'datetime' }
+              - { property: 'city', type: 'text' }
+          form:
+            fields:
+              - { property: 'image', type: 'vich_image' }
           new:
             title: 'Add New Traobject'
           edit:

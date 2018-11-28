@@ -6,6 +6,7 @@ use App\Entity\Traobject;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class TraobjectType extends AbstractType
 {
@@ -13,7 +14,7 @@ class TraobjectType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('picture')
+            ->add('image', VichImageType::class)
             ->add('description')
             ->add('eventAt')
             ->add('city')
