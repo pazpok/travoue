@@ -62,6 +62,7 @@ class UserFixtures extends Fixture
         $pazpok->setRoles(["ROLE_ADMIN"]);
         $manager->persist($pazpok);
         $this->addReference('user-pazpok', $pazpok);
+
         $manager->flush();
     }
 }
