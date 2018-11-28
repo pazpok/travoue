@@ -218,10 +218,14 @@ class User implements UserInterface
         return $this;
     }
 
-    public function __toString(): string
+    public function getFullname(): string
     {
-        return $this->getPhone();
+        return $this->getFirstname() . " " . $this->getLastname();
     }
 
+    public function __toString(): string
+    {
+        return $this->getFullname();
+    }
 
 }

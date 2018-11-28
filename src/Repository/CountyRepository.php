@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\County;
+use App\Entity\State;
+use App\Entity\Traobject;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 

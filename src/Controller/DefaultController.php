@@ -14,10 +14,10 @@ class DefaultController extends BaseController
     /**
      * @Route("/", name="homepage")
      */
-    public function homepageFound()
+    public function homepage()
     {
-        $traobjects_found = $this->getDoctrine()->getRepository(Traobject::class)->findLastTraobjectByStatut(State::FOUND);
-        $traobjects_lost = $this->getDoctrine()->getRepository(Traobject::class)->findLastTraobjectByStatut(State::LOST);
+        $traobjects_found = $this->getDoctrine()->getRepository(Traobject::class)->findLastTraobjectByState(State::FOUND, 2);
+        $traobjects_lost = $this->getDoctrine()->getRepository(Traobject::class)->findLastTraobjectByState(State::LOST, 2);
 
         return $this->render('default/homepage.html.twig', [
             'traobjects_found' => $traobjects_found,

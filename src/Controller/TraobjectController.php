@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\State;
 use App\Entity\Traobject;
 use App\Form\FoundType;
 use App\Form\LostType;
@@ -39,6 +40,14 @@ class TraobjectController extends BaseController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            if ($request->get('state') == "found") {
+                $state = $this->getDoctrine()->getRepository(State::class)->findOneBy(["label" => State::FOUND]);
+            } else {
+                $state = $this->getDoctrine()->getRepository(State::class)->findOneBy(["label" => State::LOST]);
+            }
+            $traobject->setState($state);
+
             $em->persist($traobject);
             $em->flush();
 
@@ -47,7 +56,8 @@ class TraobjectController extends BaseController
 
         return $this->render('traobject/new.html.twig', [
             'traobject' => $traobject,
-            'form' => $form->createView(),
+            'formFound' => $form->createView(),
+            'formLost' => $form->createView(),
         ]);
     }
 
@@ -94,49 +104,29 @@ class TraobjectController extends BaseController
     }
 
     /**
-     * @Route("/new", name="traobject_new#found", methods="GET|POST")
+     * @Route("/show/found", name="show_found")
      */
-    public function newFound(Request $request): Response
+    public function showFound()
     {
-        $traobject = new Traobject();
-        $foundform =$this->createForm(FoundType::class, $traobject);
-        $foundform->handleRequest($request);
+        $stateFound = $this->getDoctrine()->getRepository(Traobject::class)->findTraobjectByState(State::FOUND);
 
-        if ($foundform->isSubmitted() && $foundform->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($traobject);
-            $em->flush();
-
-            return $this->redirectToRoute('traobject_index');
-        }
-
-        return $this->render('traobject/new.html.twig', [
-            'traobject' => $traobject,
-            'form' => $foundform->createView(),
+        return $this->render('traobject/show_found.html.twig', [
+            'traobjects_found' => $stateFound,
         ]);
+
     }
 
     /**
-     * @Route("/new", name="traobject_new#lost", methods="GET|POST")
+     * @Route("/show/lost", name="show_lost")
      */
-    public function newLost(Request $request): Response
+    public function showLost()
     {
-        $traobject = new Traobject();
-        $foundform =$this->createForm(LostType::class, $traobject);
-        $foundform->handleRequest($request);
+        $stateLost = $this->getDoctrine()->getRepository(Traobject::class)->findTraobjectByState(State::LOST);
 
-        if ($foundform->isSubmitted() && $foundform->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($traobject);
-            $em->flush();
-
-            return $this->redirectToRoute('traobject_index');
-        }
-
-        return $this->render('traobject/new.html.twig', [
-            'traobject' => $traobject,
-            'form' => $foundform->createView(),
+        return $this->render('traobject/show_lost.html.twig', [
+            'traobjects_lost' => $stateLost,
         ]);
+
     }
 
 }

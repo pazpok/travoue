@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Category;
+use App\Entity\State;
+use App\Entity\Traobject;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -19,7 +21,23 @@ class CategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, Category::class);
     }
 
+    public function findTraobjectByCategory(Category $category, State $state, int $limit): array
+    {
+        $qb = $this->createQueryBuilder('t');
 
+        $qb = $qb->select('t', 'c', 's')
+            ->innerJoin('t.category', 'c')
+            ->innerJoin('t.state', 's')
+            ->where($qb->expr()->eq('c.id', ':category'))
+            ->andWhere($qb->expr()->eq('s.id', ':state'));
+
+        return $qb
+            ->setParameter(':category', $category->getId())
+            ->setParameter(':state', $state->getId())
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
 
 
     // /**
