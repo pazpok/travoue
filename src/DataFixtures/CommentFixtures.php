@@ -12,7 +12,7 @@ class CommentFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         $commentdoudou = new Comment();
-        $commentdoudou->setContent("J\'ai vu une personne ramasser le doudou, elle portait un chemisier rouge avec des basquettes blanches");
+        $commentdoudou->setContent("J'ai vu une personne ramasser le doudou, elle portait un chemisier rouge avec des basquettes blanches");
         $commentdoudou->setUser($this->getReference('user-pierre'));
         $commentdoudou->setTraobject($this->getReference('traobject-bambi'));
         $manager->persist($commentdoudou);
