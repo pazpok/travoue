@@ -8,10 +8,6 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
                 <th>Firstname</th>
                 <td>{{ user.firstname }}</td>
             </tr>
@@ -24,10 +20,6 @@
                 <td>{{ user.email }}</td>
             </tr>
             <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
-            <tr>
                 <th>Phone</th>
                 <td>{{ user.phone }}</td>
             </tr>
@@ -35,14 +27,8 @@
                 <th>Picture</th>
                 <td>{{ user.picture }}</td>
             </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ user.roles }}</td>
-            </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('user_index') }}">back to list</a>
 
     <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
 

@@ -35,31 +35,30 @@
         <hr>
 
         <h3>Commentaires</h3>
-        {% if app.user %}
-            <div>
-            <img src="{{ asset('uploads/' ~ app.user.picture) }}" alt="{{ app.user.fullname }}" style="max-height: 100px">
-            </div>
-        {% else %}
-        <div class="alert alert-secondary" role="alert">
-            <p>Veuillez vous connecter afin de pouvoir laisser un commentaire</p>
-            <a href="{{ path('app_login') }}" class="btn btn-primary">
-                <i class="fa fa-sign-in"></i>
-                Me connecter
-            </a>
-        </div>
-        {% endif %}
-
         <ul class="list-unstyled">
-            {% for comment in comments %}
+            {% if app.user %}
+                <img class="mr-3" src="{{ asset('uploads/' ~ app.user.picture) }}" alt="{{ app.user.fullname }}" style="max-height: 100px">
+                <span class="btn btn-outline-primary">{{ app.user.email }}</span>
+                {{ render(controller('App\\Controller\\CommentController:new', {'id': traobject.id}))}}
+            {% else %}
+                <a class="btn btn-outline-primary" href="{{ path('app_login') }}">Se connecter</a>
+                <a class="btn btn-outline-primary" href="{{ path('app_register') }}">
+                    <i class="fa fa-user-plus"></i>
+                    Créer un compte
+                </a>
+            {% endif %}
+            {% for comment in comments  %}
                 <li class="media mb-1">
                     <img class="mr-3" src="{{ asset('uploads/' ~ comment.user.picture) }}" alt="{{ comment.user.fullname }}" style="max-height: 100px">
                     <div class="media-body">
-                        <h5 class="mt-0 mb-1">{{ comment.user.fullname }}</h5>
+                        <h5 class="mt-0 mb-1">{{ comment.user }}</h5>
                         <p>{{ comment.content }}</p>
                     </div>
                 </li>
             {% endfor %}
         </ul>
+
+
     </div>
 
 </main>

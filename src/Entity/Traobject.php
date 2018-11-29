@@ -206,7 +206,7 @@ class Traobject
      * @param string|null $picture
      * @return Traobject
      */
-    public function setpicture(?string $picture): Traobject
+    public function setPicture(?string $picture): Traobject
     {
         $this->picture = $picture;
         return $this;

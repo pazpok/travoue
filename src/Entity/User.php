@@ -69,14 +69,14 @@ class User implements UserInterface
     private $picture;
 
     /**
-     * @Vich\UploadableField(mapping="traobject_images", fileNameProperty="picture")
+     * @Vich\UploadableField(mapping="user_images", fileNameProperty="picture")
      * @var File
      * @Assert\Image(mimeTypes={ "image/jpeg", "image/jpg", "image/png"  }, mimeTypesMessage = "Extension valide : .jpeg .png .jpg")
      */
     private $pictureFile;
 
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank(groups={"registration"})
      * @Assert\Length(max=4096)
      */
     private $plainPassword;
@@ -85,6 +85,12 @@ class User implements UserInterface
      * @ORM\Column(type="json")
      */
     private $roles = [];
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    private $updatedAt;
 
     /**
      * @return File
@@ -96,10 +102,33 @@ class User implements UserInterface
 
     /**
      * @param File|null $picture
+     * @throws \Exception
      */
     public function setPictureFile(File $picture = null)
     {
         $this->pictureFile = $picture;
+
+        if ($picture) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getUpdatedAt(): ?\DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime|null $updatedAt
+     * @return User
+     */
+    public function setUpdatedAt(?\DateTime $updatedAt): User
+    {
+        $this->updatedAt = $updatedAt;
+        return $this;
     }
 
     /**

@@ -4,3 +4,6 @@ vich_uploader:
         traobject_images:
             uri_prefix:         '%app.path.uploads_dir%'
             upload_destination: '%kernel.root_dir%/../public/%app.path.uploads_dir%'
+        user_images:
+            uri_prefix:         '%app.path.uploads_dir%'
+            upload_destination: '%kernel.root_dir%/../public/%app.path.uploads_dir%'
