@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Traobject;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
@@ -16,7 +17,7 @@ class TraobjectType extends AbstractType
             ->add('title')
             ->add('image', VichImageType::class)
             ->add('description')
-            ->add('eventAt')
+            ->add('eventAt', DateType::class, ["widget" => "single_text"])
             ->add('city')
             ->add('address')
             ->add('category')

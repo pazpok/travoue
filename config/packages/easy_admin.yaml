@@ -43,7 +43,7 @@ easy_admin:
               - { property: 'city', type: 'text' }
           form:
             fields:
-              - { property: 'image', type: 'vich_image' }
+              - { property: 'imageFile', type: 'vich_image' }
           new:
             title: 'Add New Traobject'
           edit:

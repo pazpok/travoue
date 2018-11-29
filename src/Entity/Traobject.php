@@ -39,7 +39,7 @@ class Traobject
     private $image;
 
     /**
-     * @Vich\UploadableField(mapping="uploads_dir", fileNameProperty="image")
+     * @Vich\UploadableField(mapping="traobject_images", fileNameProperty="image")
      * @var File
      */
     private $imageFile;
@@ -136,7 +136,7 @@ class Traobject
     /**
      * @return File
      */
-    public function getImageFile(): File
+    public function getImageFile(): ?File
     {
         return $this->imageFile;
     }
