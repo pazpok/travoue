@@ -1,8 +1,8 @@
 <article class="col-md-3">
     <div class="card object-card">
     <span class="badge badge-primary badge-found" style="background-color: {{ traobject.state.color }};"><i class="fa fa-map-pin"></i> {{ traobject.state.label }}</span>
-        {% if traobject.image != null %}
-            <img class="card-img-top" src="{{ asset('uploads/' ~ traobject.image) }}" alt="{{ traobject.image }}">
+        {% if traobject.picture != null %}
+            <img class="card-img-top" src="{{ asset('uploads/' ~ traobject.picture) }}" alt="{{ traobject.picture }}">
         {% else %}
             <div class="card-logo-top" style="background-color: {{ traobject.category.color }}">
                 <i class="fa {{ traobject.category.icon }}"></i>

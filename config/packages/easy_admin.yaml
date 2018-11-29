@@ -31,29 +31,43 @@ easy_admin:
             fields:
               - { property: 'id', type: 'int' }
               - { property: 'title', type: 'text' }
-              - { property: 'image', type: 'image', base_path: '%app.path.uploads_dir%' }
+              - { property: 'picture', type: 'image', base_path: '%app.path.uploads_dir%' }
               - { property: 'event_at', type: 'datetime' }
               - { property: 'city', type: 'text' }
 
           show:
             fields:
-              - { property: 'title', type: 'text' }
-              - { property: 'image', type: 'image', base_path: '%app.path.uploads_dir%' }
-              - { property: 'event_at', type: 'datetime' }
-              - { property: 'city', type: 'text' }
+              - { property: 'picture', type: 'image', base_path: '%app.path.uploads_dir%' }
           form:
             fields:
-              - { property: 'imageFile', type: 'vich_image' }
+              - { property: 'title', type: 'text' }
+              - { property: 'pictureFile', type: 'vich_image' }
+              - { property: 'event_at', type: 'datetime' }
+              - { property: 'city', type: 'text' }
           new:
             title: 'Add New Traobject'
           edit:
             title: 'Edit Traobject'
         User:
           class: App\Entity\User
-          new:
-            title: 'Add New User'
-          edit:
-            title: 'Edit User'
+          list:
+            fields:
+              - { property: 'id', type: 'int' }
+              - { property: 'firstname', type: 'text' }
+              - { property: 'lastname', type: 'text' }
+              - { property: 'email', type: 'email' }
+              - { property: 'phone', type: 'phone' }
+              - { property: 'picture', type: 'image', base_path: '%app.path.uploads_dir%' }
+          show:
+            fields:
+              - { property: 'picture', type: 'image', base_path: '%app.path.uploads_dir%' }
+          form:
+            fields:
+              - { property: 'firstname', type: 'text' }
+              - { property: 'lastname', type: 'text' }
+              - { property: 'phone', type: 'text' }
+              - { property: 'email', type: 'email' }
+              - { property: 'pictureFile', type: 'vich_image' }
     design:
       assets:
         favicon: 'assets/images/favicon.png'

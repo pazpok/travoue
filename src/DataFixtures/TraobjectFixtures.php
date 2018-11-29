@@ -17,7 +17,7 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $bambi->setState($this->getReference('state-perdu'));
         $bambi->setUser($this->getReference('user-pierre'));
         $bambi->setCounty($this->getReference('county-35'));
-        $bambi->setimage('bambi.jpg');
+        $bambi->setpicture('bambi.jpg');
         $bambi->setDescription('Doudou bambi perdu à Alma le 24/11, ma fille pleure tout le temps ...');
         $bambi->setEventAt(new \DateTime());
         $bambi->setCity('Rennes');
@@ -31,7 +31,7 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $bmw->setState($this->getReference('state-perdu'));
         $bmw->setUser($this->getReference('user-francois'));
         $bmw->setCounty($this->getReference('county-29'));
-        $bmw->setimage('bmw.jpg');
+        $bmw->setpicture('bmw.jpg');
         $bmw->setDescription('G perdu mon BMW a Brest pdt un rasso sur le por jcroi on mla vaulé mé jsui pa sur');
         $bmw->setEventAt(new \DateTime());
         $bmw->setCity('Brest');
@@ -71,7 +71,7 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $pikachu->setState($this->getReference('state-trouve'));
         $pikachu->setUser($this->getReference('user-pazpok'));
         $pikachu->setCounty($this->getReference('county-22'));
-        $pikachu->setimage('pikachu.jpg');
+        $pikachu->setpicture('pikachu.jpg');
         $pikachu->setDescription('Doudou pikachu perdu à Intermarché Rostrenen le 15/11, ma fille pleure tout le temps ...');
         $pikachu->setEventAt(new \DateTime());
         $pikachu->setCity('Rostrenen');
@@ -98,7 +98,7 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $clefm->setState($this->getReference('state-trouve'));
         $clefm->setUser($this->getReference('user-pierre'));
         $clefm->setCounty($this->getReference('county-35'));
-        $clefm->setimage('clemaison.jpg');
+        $clefm->setpicture('clemaison.jpg');
         $clefm->setDescription('Clé de maison avec porte clés didl(voir photo)');
         $clefm->setEventAt(new \DateTime());
         $clefm->setCity('Saint Malo');
@@ -112,7 +112,7 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $potechap->setState($this->getReference('state-trouve'));
         $potechap->setUser($this->getReference('user-lucie'));
         $potechap->setCounty($this->getReference('county-56'));
-        $potechap->setimage('bmw.jpg');
+        $potechap->setpicture('bmw.jpg');
         $potechap->setDescription('Le pot d\'échappement de ma 206 est parti en faisant saint brieuc rostrenen pour aller au cinéma');
         $potechap->setEventAt(new \DateTime());
         $potechap->setCity('Callac');

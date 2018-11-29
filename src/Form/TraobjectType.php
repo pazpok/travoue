@@ -15,7 +15,7 @@ class TraobjectType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('image', VichImageType::class)
+            ->add('pictureFile', VichImageType::class)
             ->add('description')
             ->add('eventAt', DateType::class, ["widget" => "single_text"])
             ->add('city')
