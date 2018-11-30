@@ -38,6 +38,12 @@ class CategoryFixtures extends Fixture
         $manager->persist($voiture);
         $this->addReference('category-voiture',  $voiture);
 
+        $jouet = new Category();
+        $jouet->setLabel('Jouet');
+        $jouet->setIcon('fa-gamepad');
+        $jouet->setColor('#f4d742');
+        $manager->persist($jouet);
+        $this->addReference('category-jouet',  $jouet);
         $manager->flush();
     }
 }

@@ -14,15 +14,14 @@ class TraobjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('pictureFile', VichImageType::class)
-            ->add('description')
-            ->add('eventAt', DateType::class, ["widget" => "single_text"])
-            ->add('city')
-            ->add('address')
-            ->add('category')
-            ->add('county')
-            ->add('user')
+            ->add('title', null, ['label' => 'Titre'])
+            ->add('pictureFile', VichImageType::class, ['label' => 'Image', 'required' => false])
+            ->add('description', null, ['label' => 'Description'])
+            ->add('eventAt', DateType::class, ["widget" => "single_text", 'label' => 'Date'])
+            ->add('city', null, ['label' => 'Ville'])
+            ->add('address', null, ['label' => 'Adresse'])
+            ->add('category', null, ['label' => 'Categorie'])
+            ->add('county', null, ['label' => 'Département'])
         ;
     }
 

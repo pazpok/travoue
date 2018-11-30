@@ -16,7 +16,13 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="{{ asset('uploads/' ~ traobject.picture) }}" class="img-thumbnail" alt="Portefeuille">
+                        {% if traobject.picture != null %}
+                            <img class="card-img-top" src="{{ asset('uploads/' ~ traobject.picture) }}" alt="{{ traobject.picture }}">
+                        {% else %}
+                            <div class="card-logo-top" style="background-color: {{ traobject.category.color }}">
+                                <i class="fa {{ traobject.category.icon }}"></i>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="col-md-8">
                         <p>{{ traobject.description }}</p>
@@ -37,8 +43,15 @@
         <h3>Commentaires</h3>
         <ul class="list-unstyled">
             {% if app.user %}
-                <img class="mr-3" src="{{ asset('uploads/' ~ app.user.picture) }}" alt="{{ app.user.fullname }}" style="max-height: 100px">
+                {% if app.user.picture != null %}
+                    <img class="mr-3" src="{{ asset('uploads/' ~ app.user.picture) }}" alt="{{ app.user.fullname }}" style="max-height: 80px">
+                    <span class="btn btn-outline-primary">{{ app.user.email }}</span>
+                {% else %}
+                    <div class="card-logo-top" style="">
+                        <i class="fa fa-user fa-5x mr-3 " style="color: #eb6864;"></i>
                 <span class="btn btn-outline-primary">{{ app.user.email }}</span>
+                    </div>
+                {% endif %}
                 {{ render(controller('App\\Controller\\CommentController:new', {'id': traobject.id}))}}
             {% else %}
                 <a class="btn btn-outline-primary" href="{{ path('app_login') }}">Se connecter</a>
@@ -49,7 +62,13 @@
             {% endif %}
             {% for comment in comments  %}
                 <li class="media mb-1">
-                    <img class="mr-3" src="{{ asset('uploads/' ~ comment.user.picture) }}" alt="{{ comment.user.fullname }}" style="max-height: 100px">
+                    {% if comment.user.picture != null %}
+                    <img class="mr-3" src="{{ asset('uploads/' ~ comment.user.picture) }}" alt="{{ comment.user.fullname }}" style="max-height: 50px">
+                    {% else %}
+                        <div class="card-logo-top" style="">
+                            <i class="fa fa-user fa-5x mr-3" style="color: #eb6864;"></i>
+                        </div>
+                    {% endif %}
                     <div class="media-body">
                         <h5 class="mt-0 mb-1">{{ comment.user }}</h5>
                         <p>{{ comment.content }}</p>

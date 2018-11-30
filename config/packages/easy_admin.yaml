@@ -1,39 +1,55 @@
 easy_admin:
-    site_name: '<img src="https://pm1.narvii.com/6885/5d96c3a9a9b487cbbcdcbb5049f2040d70114fc4r1-677-616v2_128.jpg" /> E CORP'
+    site_name: 'TRAOUVE'
     entities:
         Category:
           class: App\Entity\Category
+          label: 'Catégorie'
+          list:
+            title: 'Liste des catégories'
           new:
-            title: 'Add New Category'
+            title: 'Ajouter une nouvelle catégorie'
           edit:
-            title: 'Edit Category'
+            title: 'Modifier une nouvelle catégorie'
         Comment:
           class: App\Entity\Comment
+          label: 'Commentaire'
+          list:
+            title: 'Liste des commentaires'
           new:
-            title: 'Add New Comment'
+            title: 'Ajouter un nouveau commentaire'
           edit:
-            title: 'Edit Comment'
+            title: 'Modifier un commentaire'
         County:
           class: App\Entity\County
+          label: 'Département'
+          list:
+            title: 'Liste des départements'
           new:
-            title: 'Add New County'
+            title: 'Ajouter un nouveau département'
           edit:
-            title: 'Edit County'
+            title: 'Modifier un département'
         State:
           class: App\Entity\State
+          label: 'Statut'
+          list:
+            title: 'Liste des statuts'
           new:
-            title: 'Add New State'
+            title: 'Ajouter un nouveau statut'
           edit:
-            title: 'Edit State'
+            title: 'Modifier un statut'
         Traobject:
           class: App\Entity\Traobject
+          label: 'Objet'
           list:
+            title: 'Liste des objets'
             fields:
               - { property: 'id', type: 'int' }
               - { property: 'title', type: 'text' }
               - { property: 'picture', type: 'image', base_path: '%app.path.uploads_dir%' }
               - { property: 'event_at', type: 'datetime' }
               - { property: 'city', type: 'text' }
+              - { property: 'category', type: 'text' }
+              - { property: 'county', type: 'text' }
 
           show:
             fields:
@@ -41,22 +57,29 @@ easy_admin:
           form:
             fields:
               - { property: 'title', type: 'text' }
+              - { property: 'state', type: 'text' }
+              - { property: 'category', type_options: { expanded: false }}
+              - { property: 'description', type: 'text' }
               - { property: 'pictureFile', type: 'vich_image' }
-              - { property: 'event_at', type: 'datetime' }
+              - { property: 'event_at', type: 'date' }
               - { property: 'city', type: 'text' }
+              - { property: 'address', type: 'text' }
+              - { property: 'county', type_options: { expanded: false }}
           new:
-            title: 'Add New Traobject'
+            title: 'Ajouter un objet'
           edit:
-            title: 'Edit Traobject'
+            title: 'Modifier un objet'
         User:
           class: App\Entity\User
+          label: 'Utilisateurs'
           list:
+            title: 'Liste des utilisateurs'
             fields:
               - { property: 'id', type: 'int' }
               - { property: 'firstname', type: 'text' }
               - { property: 'lastname', type: 'text' }
               - { property: 'email', type: 'email' }
-              - { property: 'phone', type: 'phone' }
+              - { property: 'phone', type: 'text' }
               - { property: 'picture', type: 'image', base_path: '%app.path.uploads_dir%' }
           show:
             fields:
@@ -75,4 +98,4 @@ easy_admin:
           - 'bundles/easyadmin/bootstrap-all.css'
         js:
           - 'bundles/easyadmin/bootstrap-all.js'
-      brand_color : '#000d1a'
+      brand_color : '#eb6864'

@@ -1,21 +1,29 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
+    <div class="container">
+        <h1>Catégorie : {{ category.label }}</h1>
 
-    <h1>Catégorie : {{ category.label }}</h1>
-
-    <section class="row">
-        <h2>Trouvés</h2>
-        {% for traobject in traobjects if traobject.state.label == 'Trouvé' %}
-            {% include 'traobject/card.html.twig' with {'traobject': traobject} only %}
-        {% endfor %}
-    </section>
-
-    <section class="row">
-        <h2>Perdu</h2>
-        {% for traobject in traobjects if traobject.state.label == 'Perdu' %}
-            {% include 'traobject/card.html.twig' with {'traobject': traobject} only %}
-        {% endfor %}
-    </section>
+        <div class="m-2">
+            <section class="row">
+                <h2>Trouvés :</h2>
+                <div class="d-flex">
+                    {% for traobject in traobjects if traobject.state.label == 'Trouvé' %}
+                        {% include 'traobject/card.html.twig' with {'traobject': traobject} only %}
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+        <div class="m-2">
+            <section class="row">
+                <h2>Perdu :</h2>
+                <div class="d-flex">
+                    {% for traobject in traobjects if traobject.state.label == 'Perdu' %}
+                        {% include 'traobject/card.html.twig' with {'traobject': traobject} only %}
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+    </div>
 
 {% endblock %}

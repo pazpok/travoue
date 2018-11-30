@@ -15,9 +15,9 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname')
-            ->add('lastname')
-            ->add('pictureFile', VichImageType::class)
+            ->add('firstname', null, ['label' => 'Prénom'])
+            ->add('lastname', null, ['label' => 'Nom'])
+            ->add('pictureFile', VichImageType::class, ['required' => false])
             ->add('email')
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,

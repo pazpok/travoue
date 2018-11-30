@@ -48,7 +48,7 @@ class TraobjectController extends BaseController
                 $state = $this->getDoctrine()->getRepository(State::class)->findOneBy(["label" => State::LOST]);
             }
             $traobject->setState($state);
-
+            $traobject->setUser($this->getUser());
             $em->persist($traobject);
             $em->flush();
 
